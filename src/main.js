@@ -1,4 +1,9 @@
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from "vue";
+import App from "./App.vue";
 
-createApp(App).mount('#app')
+// Components
+import MyContact from "./components/MyContact.vue";
+
+const contacts = createApp(App);
+contacts.component("my-contact", MyContact);
+contacts.mount("#app");
