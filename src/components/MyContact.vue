@@ -1,26 +1,22 @@
 <template>
   <div class="contact">
-    <h4 class="name">{{ friend.name }}</h4>
+    <h4 class="name">{{ name }}</h4>
     <button class="details-btn" @click="isDetailsVisible = !isDetailsVisible">
       {{ isDetailsVisible ? "Hide" : "Show" }} Details
     </button>
     <ul class="details" v-if="isDetailsVisible">
-      <li class="phone">{{ friend.phone }}</li>
-      <li class="email">{{ friend.email }}</li>
+      <li class="phone">{{ phoneNumber }}</li>
+      <li class="email">{{ emailAddress }}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
+  props: ["name", "phoneNumber", "emailAddress"],
   data() {
     return {
       isDetailsVisible: false,
-      friend: {
-        name: "Arezoo",
-        phone: "09112345678",
-        email: "arezoo@gmail.com",
-      },
     };
   },
 };
