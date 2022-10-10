@@ -1,9 +1,10 @@
 <template>
   <div class="contact">
-    <h4 class="name">{{ name }}</h4>
-    <button class="details-btn" @click="isDetailsVisible = !isDetailsVisible">
+    <h4 class="name">{{ name }} {{ isFavorite == "1" ? "(Favorite)" : "" }}</h4>
+    <button class="btn" @click="toggleDetails">
       {{ isDetailsVisible ? "Hide" : "Show" }} Details
     </button>
+    <button class="btn" @click="toggleFavorite">Favorite</button>
     <ul class="details" v-if="isDetailsVisible">
       <li class="phone">{{ phoneNumber }}</li>
       <li class="email">{{ emailAddress }}</li>
@@ -13,11 +14,24 @@
 
 <script>
 export default {
-  props: ["name", "phoneNumber", "emailAddress"],
+  props: ["name", "phoneNumber", "emailAddress", "favorite"],
   data() {
     return {
       isDetailsVisible: false,
+      isFavorite: this.favorite,
     };
+  },
+  methods: {
+    toggleDetails() {
+      this.isDetailsVisible = !this.isDetailsVisible;
+    },
+    toggleFavorite() {
+      if (this.isFavorite == "1") {
+        this.isFavorite = "0";
+      } else {
+        this.isFavorite = "1";
+      }
+    },
   },
 };
 </script>
@@ -39,15 +53,16 @@ export default {
 .name {
   font-size: 22px;
 }
-.details-btn {
+.btn {
   color: #eeeeee;
   background-color: #252525;
   border-radius: 4px;
   padding: 0.4rem 0.6rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  margin: 0.2rem auto;
 }
-.details-btn:hover {
+.btn:hover {
   color: #252525;
   background-color: #cccccc;
 }
