@@ -2,7 +2,7 @@
   <div class="contact">
     <h4 class="name">
       {{ name }}
-      <span class="favorite">{{ isFavorite == "1" ? "(Favorite)" : "" }}</span>
+      <span class="favorite">{{ isFavorite ? "(Favorite)" : "" }}</span>
     </h4>
     <button class="btn" @click="toggleDetails">
       {{ isDetailsVisible ? "Hide" : "Show" }} Details
@@ -11,7 +11,7 @@
       class="btn"
       id="favorite-btn"
       :style="{
-        textDecoration: isFavorite == '1' ? '1px line-through red' : 'none',
+        textDecoration: isFavorite ? '1px line-through red' : 'none',
       }"
       @click="toggleFavorite"
     >
@@ -26,11 +26,16 @@
 
 <script>
 export default {
-  props: ["name", "phoneNumber", "emailAddress", "favorite"],
+  props: {
+    name: String,
+    emailAddress: String,
+    phoneNumber: String,
+    favorite: Boolean,
+  },
   data() {
     return {
       isDetailsVisible: false,
-      isFavorite: Number(this.favorite),
+      isFavorite: this.favorite,
     };
   },
   methods: {
@@ -38,17 +43,11 @@ export default {
       this.isDetailsVisible = !this.isDetailsVisible;
     },
     toggleFavorite() {
-      if (this.isFavorite == "1") {
-        this.isFavorite = "0";
+      if (this.isFavorite) {
+        this.isFavorite = false;
       } else {
-        this.isFavorite = "1";
+        this.isFavorite = true;
       }
-    },
-  },
-  watch: {
-    isFavorite() {
-      console.log(Boolean(this.isFavorite));
-      console.log(this.isFavorite);
     },
   },
 };
