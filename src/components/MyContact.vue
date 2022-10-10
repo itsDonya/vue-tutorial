@@ -1,10 +1,22 @@
 <template>
   <div class="contact">
-    <h4 class="name">{{ name }} {{ isFavorite == "1" ? "(Favorite)" : "" }}</h4>
+    <h4 class="name">
+      {{ name }}
+      <span class="favorite">{{ isFavorite == "1" ? "(Favorite)" : "" }}</span>
+    </h4>
     <button class="btn" @click="toggleDetails">
       {{ isDetailsVisible ? "Hide" : "Show" }} Details
     </button>
-    <button class="btn" @click="toggleFavorite">Favorite</button>
+    <button
+      class="btn"
+      id="favorite-btn"
+      :style="{
+        textDecoration: isFavorite == '1' ? '1px line-through red' : 'none',
+      }"
+      @click="toggleFavorite"
+    >
+      Favorite
+    </button>
     <ul class="details" v-if="isDetailsVisible">
       <li class="phone">{{ phoneNumber }}</li>
       <li class="email">{{ emailAddress }}</li>
@@ -18,7 +30,7 @@ export default {
   data() {
     return {
       isDetailsVisible: false,
-      isFavorite: this.favorite,
+      isFavorite: Number(this.favorite),
     };
   },
   methods: {
@@ -31,6 +43,12 @@ export default {
       } else {
         this.isFavorite = "1";
       }
+    },
+  },
+  watch: {
+    isFavorite() {
+      console.log(Boolean(this.isFavorite));
+      console.log(this.isFavorite);
     },
   },
 };
@@ -53,14 +71,19 @@ export default {
 .name {
   font-size: 22px;
 }
+.favorite {
+  color: rebeccapurple;
+  font-size: 14px;
+}
 .btn {
   color: #eeeeee;
   background-color: #252525;
   border-radius: 4px;
-  padding: 0.4rem 0.6rem;
+  padding: 0.5rem 0.7rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   margin: 0.2rem auto;
+  border: none;
 }
 .btn:hover {
   color: #252525;
@@ -84,5 +107,8 @@ export default {
   border-radius: 6px;
   padding: 0.6rem 0;
   margin: 0;
+}
+.notFavorite {
+  text-decoration: 2px line-through red !important;
 }
 </style>
