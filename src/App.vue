@@ -1,8 +1,8 @@
 <template>
   <h1 class="title">My Contacts</h1>
   <div class="contacts">
-    <add-contact @add-contact="addContact"></add-contact>
-    <my-contact
+    <AddContact @add-contact="addContact" />
+    <MyContact
       v-for="friend in friends"
       :key="friend.id"
       :id="friend.id"
@@ -14,11 +14,17 @@
       :details="friend.detailsVisible"
       @toggle-details="toggleDetails"
       @delete-contact="deleteContact"
-    ></my-contact>
+    />
   </div>
 </template>
 <script>
+import MyContact from "./components/MyContact.vue";
+import AddContact from "./components/AddContact.vue";
 export default {
+  components: {
+    MyContact: MyContact,
+    AddContact: AddContact,
+  },
   data() {
     return {
       counter: 0,

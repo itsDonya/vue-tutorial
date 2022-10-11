@@ -98,7 +98,7 @@ export default {
   color: #252525;
   background-color: #ffffff;
   padding: 0.2rem 0.4rem;
-  border: none;
+  border: 1px solid #252525;
   border-radius: 4px;
 }
 #contact-favorite {
