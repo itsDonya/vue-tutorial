@@ -4,9 +4,6 @@
       {{ name }}
       <span class="favorite">{{ favorite ? "(Favorite)" : "" }}</span>
     </h4>
-    <button class="btn" @click="toggleDetails">
-      {{ details ? "Hide" : "Show" }} Details
-    </button>
     <button
       class="btn"
       id="favorite-btn"
@@ -16,6 +13,10 @@
       @click="toggleFavorite"
     >
       Favorite
+    </button>
+    <button class="btn" @click="deleteContact">DeleteContact</button>
+    <button class="btn" @click="toggleDetails">
+      {{ details ? "Hide" : "Show" }} Details
     </button>
     <ul class="details" v-if="details">
       <li class="phone">{{ phoneNumber }}</li>
@@ -34,12 +35,16 @@ export default {
     favorite: Boolean,
     details: Boolean,
   },
+  emits: ["toggle-details", "toggle-favorite", "delete-contact"],
   methods: {
     toggleDetails() {
       this.$emit("toggle-details", this.id);
     },
     toggleFavorite() {
       this.$emit("toggle-favorite", this.id);
+    },
+    deleteContact() {
+      this.$emit("delete-contact", this.id);
     },
   },
 };
@@ -68,6 +73,7 @@ export default {
 }
 .btn {
   color: #eeeeee;
+  width: 160px;
   background-color: #252525;
   border-radius: 4px;
   padding: 0.5rem 0.7rem;

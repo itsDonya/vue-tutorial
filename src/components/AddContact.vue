@@ -57,6 +57,10 @@ export default {
         this.newContactInfo.contactEmail
       ) {
         this.$emit("add-contact", this.newContactInfo);
+        this.newContactInfo.contactName = "";
+        this.newContactInfo.contactPhone = "";
+        this.newContactInfo.contactEmail = "";
+        this.newContactInfo.contactFavorite = false;
       }
     },
   },

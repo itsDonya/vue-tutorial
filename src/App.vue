@@ -13,6 +13,7 @@
       @toggle-favorite="toggleFavorite"
       :details="friend.detailsVisible"
       @toggle-details="toggleDetails"
+      @delete-contact="deleteContact"
     ></my-contact>
   </div>
 </template>
@@ -49,6 +50,12 @@ export default {
         detailsVisible: false,
       });
       this.counter++;
+    },
+    deleteContact(friendId) {
+      const identifiedFriend = this.friends.find(
+        (friend) => friend.id === friendId
+      );
+      this.friends.splice(identifiedFriend, 1);
     },
   },
 };
