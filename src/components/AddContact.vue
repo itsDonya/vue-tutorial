@@ -67,7 +67,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .add-contact {
   width: 310px;
   height: 360px;
