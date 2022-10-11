@@ -1,6 +1,7 @@
 <template>
   <h1 class="title">My Contacts</h1>
   <div class="contacts">
+    <add-contact @add-contact="addContact"></add-contact>
     <my-contact
       v-for="friend in friends"
       :key="friend.id"
@@ -19,32 +20,8 @@
 export default {
   data() {
     return {
-      friends: [
-        {
-          id: "1",
-          name: "Arezoo Delrooz",
-          phone: "09123456789",
-          email: "arezoo@gmail.com",
-          favorite: true,
-          detailsVisible: false,
-        },
-        {
-          id: "2",
-          name: "Nima Azizi",
-          phone: "09917654321",
-          email: "nima@gmail.com",
-          favorite: false,
-          detailsVisible: false,
-        },
-        {
-          id: "3",
-          name: "Donya Davoodi",
-          phone: "09021029245",
-          email: "donya@gmail.com",
-          favorite: true,
-          detailsVisible: false,
-        },
-      ],
+      counter: 0,
+      friends: [],
     };
   },
   methods: {
@@ -59,6 +36,19 @@ export default {
         (friend) => friend.id === friendId
       );
       identifiedFriend.detailsVisible = !identifiedFriend.detailsVisible;
+    },
+    addContact(newContact) {
+      const { contactName, contactPhone, contactEmail, contactFavorite } =
+        newContact;
+      this.friends.unshift({
+        id: String(this.counter),
+        name: contactName,
+        phone: String(contactPhone),
+        email: contactEmail,
+        favorite: contactFavorite,
+        detailsVisible: false,
+      });
+      this.counter++;
     },
   },
 };
