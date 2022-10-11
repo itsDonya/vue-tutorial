@@ -2,22 +2,22 @@
   <div class="contact">
     <h4 class="name">
       {{ name }}
-      <span class="favorite">{{ isFavorite ? "(Favorite)" : "" }}</span>
+      <span class="favorite">{{ favorite ? "(Favorite)" : "" }}</span>
     </h4>
     <button class="btn" @click="toggleDetails">
-      {{ isDetailsVisible ? "Hide" : "Show" }} Details
+      {{ details ? "Hide" : "Show" }} Details
     </button>
     <button
       class="btn"
       id="favorite-btn"
       :style="{
-        textDecoration: isFavorite ? '1px line-through red' : 'none',
+        textDecoration: favorite ? '1px line-through red' : 'none',
       }"
       @click="toggleFavorite"
     >
       Favorite
     </button>
-    <ul class="details" v-if="isDetailsVisible">
+    <ul class="details" v-if="details">
       <li class="phone">{{ phoneNumber }}</li>
       <li class="email">{{ emailAddress }}</li>
     </ul>
@@ -27,27 +27,19 @@
 <script>
 export default {
   props: {
+    id: String,
     name: String,
     emailAddress: String,
     phoneNumber: String,
     favorite: Boolean,
-  },
-  data() {
-    return {
-      isDetailsVisible: false,
-      isFavorite: this.favorite,
-    };
+    details: Boolean,
   },
   methods: {
     toggleDetails() {
-      this.isDetailsVisible = !this.isDetailsVisible;
+      this.$emit("toggle-details", this.id);
     },
     toggleFavorite() {
-      if (this.isFavorite) {
-        this.isFavorite = false;
-      } else {
-        this.isFavorite = true;
-      }
+      this.$emit("toggle-favorite", this.id);
     },
   },
 };

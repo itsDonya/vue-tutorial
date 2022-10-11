@@ -4,10 +4,14 @@
     <my-contact
       v-for="friend in friends"
       :key="friend.id"
+      :id="friend.id"
       :name="friend.name"
       :phone-number="friend.phone"
       :email-address="friend.email"
       :favorite="friend.favorite"
+      @toggle-favorite="toggleFavorite"
+      :details="friend.detailsVisible"
+      @toggle-details="toggleDetails"
     ></my-contact>
   </div>
 </template>
@@ -22,6 +26,7 @@ export default {
           phone: "09123456789",
           email: "arezoo@gmail.com",
           favorite: true,
+          detailsVisible: false,
         },
         {
           id: "2",
@@ -29,6 +34,7 @@ export default {
           phone: "09917654321",
           email: "nima@gmail.com",
           favorite: false,
+          detailsVisible: false,
         },
         {
           id: "3",
@@ -36,9 +42,24 @@ export default {
           phone: "09021029245",
           email: "donya@gmail.com",
           favorite: true,
+          detailsVisible: false,
         },
       ],
     };
+  },
+  methods: {
+    toggleFavorite(friendId) {
+      const identifiedFriend = this.friends.find(
+        (friend) => friend.id === friendId
+      );
+      identifiedFriend.favorite = !identifiedFriend.favorite;
+    },
+    toggleDetails(friendId) {
+      const identifiedFriend = this.friends.find(
+        (friend) => friend.id === friendId
+      );
+      identifiedFriend.detailsVisible = !identifiedFriend.detailsVisible;
+    },
   },
 };
 </script>
