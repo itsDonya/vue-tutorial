@@ -1,7 +1,9 @@
 <template>
   <h1 class="title">My Contacts</h1>
   <div class="contacts">
-    <AddContact @add-contact="addContact" />
+    <AddContact @add-contact="addContact">
+      <FormTitle />
+    </AddContact>
     <MyContact
       v-for="friend in friends"
       :key="friend.id"
@@ -20,10 +22,13 @@
 <script>
 import MyContact from "./components/MyContact.vue";
 import AddContact from "./components/AddContact.vue";
+import FormTitle from "./components/FormTitle.vue";
+
 export default {
   components: {
-    MyContact: MyContact,
-    AddContact: AddContact,
+    MyContact,
+    AddContact,
+    FormTitle,
   },
   data() {
     return {

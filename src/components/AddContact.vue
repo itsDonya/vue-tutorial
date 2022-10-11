@@ -1,6 +1,6 @@
 <template>
   <form class="add-contact">
-    <h5 class="add-contact-title">Add New Contact</h5>
+    <slot></slot>
     <div>
       <label for="contact-name">Full name</label>
       <input
@@ -77,10 +77,6 @@ export default {
   margin: auto;
   box-shadow: inset -4px -4px 12px #cccccc90, inset 4px 4px 12px #ffffff;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-}
-.add-contact-title {
-  font-size: 18px;
-  text-align: center;
 }
 .add-contact div {
   display: flex;
