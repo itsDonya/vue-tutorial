@@ -4,29 +4,35 @@
     <AddContact @add-contact="addContact">
       <FormTitle />
     </AddContact>
-    <MyContact
-      v-for="friend in friends"
-      :key="friend.id"
-      :id="friend.id"
-      :name="friend.name"
-      :phone-number="friend.phone"
-      :email-address="friend.email"
-      :favorite="friend.favorite"
-      @toggle-favorite="toggleFavorite"
-      :details="friend.detailsVisible"
-      @toggle-details="toggleDetails"
-      @delete-contact="deleteContact"
-    />
+    <ContactsContainer>
+      <template v-slot:my-contact>
+        <MyContact
+          v-for="friend in friends"
+          :key="friend.id"
+          :id="friend.id"
+          :name="friend.name"
+          :phone-number="friend.phone"
+          :email-address="friend.email"
+          :favorite="friend.favorite"
+          @toggle-favorite="toggleFavorite"
+          :details="friend.detailsVisible"
+          @toggle-details="toggleDetails"
+          @delete-contact="deleteContact"
+        />
+      </template>
+    </ContactsContainer>
   </div>
 </template>
 <script>
 import MyContact from "./components/MyContact.vue";
+import ContactsContainer from "./components/ContactsContainer.vue";
 import AddContact from "./components/AddContact.vue";
 import FormTitle from "./components/FormTitle.vue";
 
 export default {
   components: {
     MyContact,
+    ContactsContainer,
     AddContact,
     FormTitle,
   },
