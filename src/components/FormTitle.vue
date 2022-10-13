@@ -1,6 +1,17 @@
 <template>
-  <h5 class="add-contact-title">Add New Contact</h5>
+  <h5 class="add-contact-title" :style="{ color: color }">Add New Contact</h5>
 </template>
+
+<script>
+export default {
+  props: ["colorHex"],
+  data() {
+    return {
+      color: this.colorHex,
+    };
+  },
+};
+</script>
 
 <style scoped>
 h5 {

@@ -1,9 +1,17 @@
 <template>
   <h1 class="title">My Contacts</h1>
   <div class="contacts">
-    <AddContact @add-contact="addContact">
-      <FormTitle />
-    </AddContact>
+    <div id="buttons">
+      <button @click="changeAddContactCmp('add-contact', '#252525')">
+        Light theme
+      </button>
+      <button @click="changeAddContactCmp('add-contact-dark', '#eeeeee')">
+        Dark theme
+      </button>
+    </div>
+    <component :is="addContactCmp" @add-contact="addContact">
+      <FormTitle :colorHex="addContactTitleColor" />
+    </component>
     <ContactsContainer>
       <template v-slot:myContact>
         <MyContact
@@ -23,10 +31,12 @@
     </ContactsContainer>
   </div>
 </template>
+
 <script>
 import MyContact from "./components/MyContact.vue";
 import ContactsContainer from "./components/ContactsContainer.vue";
 import AddContact from "./components/AddContact.vue";
+import AddContactDark from "./components/AddContactDark.vue";
 import FormTitle from "./components/FormTitle.vue";
 
 export default {
@@ -34,12 +44,15 @@ export default {
     MyContact,
     ContactsContainer,
     AddContact,
+    AddContactDark,
     FormTitle,
   },
   data() {
     return {
       counter: 0,
       friends: [],
+      addContactTitleColor: "#252525",
+      addContactCmp: "add-contact",
     };
   },
   methods: {
@@ -74,6 +87,10 @@ export default {
       );
       this.friends.splice(identifiedFriend, 1);
     },
+    changeAddContactCmp(cmp, color) {
+      this.addContactCmp = cmp;
+      this.addContactTitleColor = color;
+    },
   },
 };
 </script>
@@ -83,5 +100,16 @@ export default {
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   text-align: center;
+}
+#buttons {
+  width: 340px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.6rem auto;
+}
+#buttons button {
+  padding: 1rem 2.8rem;
+  cursor: pointer;
 }
 </style>
