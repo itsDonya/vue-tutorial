@@ -1,8 +1,10 @@
 <template>
-  <slot name="my-contact">
-    <p>You have no contact yet!</p>
-  </slot>
+  <div id="contacts-container" v-if="$slots.myContact">
+    <slot name="myContact"></slot>
+  </div>
 </template>
+
+<script></script>
 
 <style scoped>
 p {

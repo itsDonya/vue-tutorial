@@ -5,7 +5,7 @@
       <FormTitle />
     </AddContact>
     <ContactsContainer>
-      <template v-slot:my-contact>
+      <template v-slot:myContact>
         <MyContact
           v-for="friend in friends"
           :key="friend.id"
