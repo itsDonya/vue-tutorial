@@ -10,10 +10,17 @@
       </button>
     </div>
     <keep-alive>
-      <component :is="addContactCmp" @add-contact="addContact">
+      <component
+        :is="addContactCmp"
+        @add-contact="addContact"
+        @form-invalid="formInvalid"
+      >
         <FormTitle :colorHex="addContactTitleColor" />
       </component>
     </keep-alive>
+    <ShowError v-if="formIsInvalid">
+      <h1>Please fill out the form below!</h1>
+    </ShowError>
     <ContactsContainer>
       <template v-slot:myContact>
         <MyContact
@@ -40,6 +47,7 @@ import ContactsContainer from "./components/ContactsContainer.vue";
 import AddContact from "./components/AddContact.vue";
 import AddContactDark from "./components/AddContactDark.vue";
 import FormTitle from "./components/FormTitle.vue";
+import ShowError from "./components/ShowError.vue";
 
 export default {
   components: {
@@ -48,6 +56,7 @@ export default {
     AddContact,
     AddContactDark,
     FormTitle,
+    ShowError,
   },
   data() {
     return {
@@ -55,6 +64,7 @@ export default {
       friends: [],
       addContactTitleColor: "#252525",
       addContactCmp: "add-contact",
+      formIsInvalid: false,
     };
   },
   methods: {
@@ -82,6 +92,7 @@ export default {
         detailsVisible: false,
       });
       this.counter++;
+      this.formIsInvalid = false;
     },
     deleteContact(friendId) {
       const identifiedFriend = this.friends.find(
@@ -92,6 +103,9 @@ export default {
     changeAddContactCmp(cmp, color) {
       this.addContactCmp = cmp;
       this.addContactTitleColor = color;
+    },
+    formInvalid() {
+      this.formIsInvalid = true;
     },
   },
 };

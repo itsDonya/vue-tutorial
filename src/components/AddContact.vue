@@ -61,6 +61,8 @@ export default {
         this.newContactInfo.contactPhone = "";
         this.newContactInfo.contactEmail = "";
         this.newContactInfo.contactFavorite = false;
+      } else {
+        this.$emit("form-invalid");
       }
     },
   },
