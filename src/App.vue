@@ -9,9 +9,11 @@
         Dark theme
       </button>
     </div>
-    <component :is="addContactCmp" @add-contact="addContact">
-      <FormTitle :colorHex="addContactTitleColor" />
-    </component>
+    <keep-alive>
+      <component :is="addContactCmp" @add-contact="addContact">
+        <FormTitle :colorHex="addContactTitleColor" />
+      </component>
+    </keep-alive>
     <ContactsContainer>
       <template v-slot:myContact>
         <MyContact
