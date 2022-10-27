@@ -9,6 +9,9 @@ const store = createStore({
     };
   },
   mutations: {
+    addTwo(state) {
+      state.counter += 2;
+    },
     addFour(state) {
       state.counter += 4;
     },
@@ -21,6 +24,13 @@ const store = createStore({
 
       // Second way
       state.counter = state.counter + payload.value;
+    },
+  },
+  actions: {
+    addTwo(context) {
+      setTimeout(function () {
+        context.commit("addTwo");
+      }, 3000);
     },
   },
   getters: {

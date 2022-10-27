@@ -4,6 +4,7 @@
     <DubbledCounter />
     <NormalizedCounter />
     <button @click="decrease">Reduce 2</button>
+    <button @click="addTwo">Add 2</button>
     <button @click="increase">Add 4</button>
     <ChangeCounter />
   </MyContainer>
@@ -27,7 +28,9 @@ export default {
     increase() {
       this.$store.commit("addFour");
     },
-
+    addTwo() {
+      this.$store.dispatch("addTwo");
+    },
     decrease() {
       this.$store.commit("reduceTwo");
     },
