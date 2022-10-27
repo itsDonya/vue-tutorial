@@ -12,6 +12,13 @@ const store = createStore({
     addFour(state) {
       state.counter += 4;
     },
+    increaseOptional(state, payload) {
+      // First way
+      // state.counter = state.counter + payload;
+
+      // Second way
+      state.counter = state.counter + payload.value;
+    },
   },
 });
 
