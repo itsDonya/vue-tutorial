@@ -8,6 +8,11 @@ const store = createStore({
       counter: 0,
     };
   },
+  mutations: {
+    addFour(state) {
+      state.counter += 4;
+    },
+  },
 });
 
 const app = createApp(App);
