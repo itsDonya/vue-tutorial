@@ -1,7 +1,10 @@
 <template>
   <MyContainer title="VueX">
     <TheCounter />
-    <button @click="Increase">Add 4</button>
+    <DubbledCounter />
+    <NormalizedCounter />
+    <button @click="decrease">Reduce 2</button>
+    <button @click="increase">Add 4</button>
     <ChangeCounter />
   </MyContainer>
 </template>
@@ -10,15 +13,23 @@
 import MyContainer from "./components/MyContainer.vue";
 import TheCounter from "./components/TheCounter.vue";
 import ChangeCounter from "./components/ChangeCounter.vue";
+import DubbledCounter from "./components/DubbledCounter.vue";
+import NormalizedCounter from "./components/NormalizedCounter.vue";
 export default {
   components: {
     MyContainer,
     TheCounter,
     ChangeCounter,
+    DubbledCounter,
+    NormalizedCounter,
   },
   methods: {
-    Increase() {
+    increase() {
       this.$store.commit("addFour");
+    },
+
+    decrease() {
+      this.$store.commit("reduceTwo");
     },
   },
 };
