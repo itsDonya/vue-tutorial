@@ -2,18 +2,13 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import { createStore } from "vuex";
 
-const store = createStore({
+const counterModule = {
   state() {
     return {
       counter: 0,
-      newCounter: 0,
-      isLoggedIn: false,
     };
   },
   mutations: {
-    addOne(state) {
-      state.newCounter++;
-    },
     addTwo(state) {
       state.counter += 2;
     },
@@ -29,6 +24,40 @@ const store = createStore({
 
       // Second way
       state.counter = state.counter + payload.value;
+    },
+  },
+  actions: {
+    addTwo(context) {
+      setTimeout(function () {
+        context.commit("addTwo");
+      }, 3000);
+    },
+  },
+  getters: {
+    dubbledCounter(state) {
+      return state.counter * 2;
+    },
+    normalizedCounter(state, getters) {
+      const dubbledCounter = getters.dubbledCounter;
+      // If counter is less than 0, it keeps showing 0
+      if (state.counter < 0) {
+        return 0;
+      }
+      // If counter is more than 0, it returns the counter * 2
+      return dubbledCounter;
+    },
+  },
+};
+
+const newCounterModule = {
+  state() {
+    return {
+      newCounter: 0,
+    };
+  },
+  mutations: {
+    addOne(state) {
+      state.newCounter++;
     },
     sendCounterValue(state) {
       fetch(
@@ -64,16 +93,8 @@ const store = createStore({
           console.log("Can't get the requested value");
         });
     },
-    setAuth(state, payload) {
-      state.isLoggedIn = payload.isAuth;
-    },
   },
   actions: {
-    addTwo(context) {
-      setTimeout(function () {
-        context.commit("addTwo");
-      }, 3000);
-    },
     sendCounterValue(context, delay) {
       setTimeout(() => {
         context.commit("sendCounterValue");
@@ -84,6 +105,21 @@ const store = createStore({
         context.commit("getCounterValue");
       }, delay);
     },
+  },
+};
+
+const authorizationModule = {
+  state() {
+    return {
+      isLoggedIn: false,
+    };
+  },
+  mutations: {
+    setAuth(state, payload) {
+      state.isLoggedIn = payload.isAuth;
+    },
+  },
+  actions: {
     login(context) {
       context.commit("setAuth", { isAuth: true });
     },
@@ -92,21 +128,17 @@ const store = createStore({
     },
   },
   getters: {
-    dubbledCounter(state) {
-      return state.counter * 2;
-    },
-    normalizedCounter(state, getters) {
-      const dubbledCounter = getters.dubbledCounter;
-      // If counter is less than 0, it keeps showing 0
-      if (state.counter < 0) {
-        return 0;
-      }
-      // If counter is more than 0, it returns the counter * 2
-      return dubbledCounter;
-    },
     isAuthorized(state) {
       return state.isLoggedIn;
     },
+  },
+};
+
+const store = createStore({
+  modules: {
+    myCounter: counterModule,
+    myNewCounter: newCounterModule,
+    authorization: authorizationModule,
   },
 });
 

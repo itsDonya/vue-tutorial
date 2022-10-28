@@ -10,7 +10,7 @@ import { mapActions } from "vuex";
 export default {
   computed: {
     counter() {
-      return this.$store.state.newCounter;
+      return this.$store.state.myNewCounter.newCounter;
     },
   },
   methods: {
