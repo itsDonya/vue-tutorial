@@ -36,18 +36,18 @@ export default {
   },
   computed: {
     isAuth() {
-      return this.$store.getters.isAuthorized;
+      return this.$store.getters["authorization/isAuthorized"];
     },
   },
   methods: {
     increase() {
-      this.$store.commit("addFour");
+      this.$store.commit("myCounter/addFour");
     },
     addTwo() {
-      this.$store.dispatch("addTwo");
+      this.$store.dispatch("myCounter/addTwo");
     },
     decrease() {
-      this.$store.commit("reduceTwo");
+      this.$store.commit("myCounter/reduceTwo");
     },
   },
 };

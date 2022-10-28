@@ -14,7 +14,7 @@ export default {
 
       // Third way
       this.$store.commit({
-        type: "increaseOptional",
+        type: "myCounter/increaseOptional",
         value: 10,
       });
     },

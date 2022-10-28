@@ -7,11 +7,11 @@
 import { mapActions } from "vuex";
 export default {
   methods: {
-    ...mapActions(["login", "logout"]),
+    ...mapActions("authorization", ["login", "logout"]),
   },
   computed: {
     isAuth() {
-      return this.$store.getters.isAuthorized;
+      return this.$store.getters["authorization/isAuthorized"];
     },
   },
 };

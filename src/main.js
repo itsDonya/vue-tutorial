@@ -3,6 +3,7 @@ import App from "./App.vue";
 import { createStore } from "vuex";
 
 const counterModule = {
+  namespaced: true,
   state() {
     return {
       counter: 0,
@@ -50,6 +51,7 @@ const counterModule = {
 };
 
 const newCounterModule = {
+  namespaced: true,
   state() {
     return {
       newCounter: 0,
@@ -109,6 +111,7 @@ const newCounterModule = {
 };
 
 const authorizationModule = {
+  namespaced: true,
   state() {
     return {
       isLoggedIn: false,

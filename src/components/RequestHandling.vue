@@ -15,9 +15,9 @@ export default {
   },
   methods: {
     addOne() {
-      this.$store.commit("addOne");
+      this.$store.commit("myNewCounter/addOne");
     },
-    ...mapActions(["sendCounterValue", "getCounterValue"]),
+    ...mapActions("myNewCounter", ["sendCounterValue", "getCounterValue"]),
   },
 };
 </script>
