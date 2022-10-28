@@ -1,5 +1,5 @@
 <template>
-  <MyContainer title="VueX">
+  <my-container title="VueX">
     <TheCounter />
     <DubbledCounter />
     <NormalizedCounter />
@@ -7,7 +7,10 @@
     <button @click="addTwo">Add 2</button>
     <button @click="increase">Add 4</button>
     <ChangeCounter />
-  </MyContainer>
+  </my-container>
+  <my-container title="VueX">
+    <RequestHandling />
+  </my-container>
 </template>
 
 <script>
@@ -16,6 +19,7 @@ import TheCounter from "./components/TheCounter.vue";
 import ChangeCounter from "./components/ChangeCounter.vue";
 import DubbledCounter from "./components/DubbledCounter.vue";
 import NormalizedCounter from "./components/NormalizedCounter.vue";
+import RequestHandling from "./components/RequestHandling.vue";
 export default {
   components: {
     MyContainer,
@@ -23,6 +27,7 @@ export default {
     ChangeCounter,
     DubbledCounter,
     NormalizedCounter,
+    RequestHandling,
   },
   methods: {
     increase() {
