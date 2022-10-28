@@ -1,9 +1,9 @@
 import { createStore } from "vuex";
 
 // Modules
-import counterModule from "./counter";
-import newCounterModule from "./newCounter";
-import authorizationModule from "./authorization";
+import counterModule from "./modules/counter";
+import newCounterModule from "./modules/newCounter";
+import authorizationModule from "./modules/authorization";
 
 const store = createStore({
   modules: {
