@@ -1,5 +1,8 @@
 <template>
-  <my-container title="VueX">
+  <my-container title="Auth">
+    <TheAuthorization />
+  </my-container>
+  <my-container title="VueX" v-if="isAuth">
     <TheCounter />
     <DubbledCounter />
     <NormalizedCounter />
@@ -8,7 +11,7 @@
     <button @click="increase">Add 4</button>
     <ChangeCounter />
   </my-container>
-  <my-container title="VueX">
+  <my-container title="Counter" v-if="isAuth">
     <RequestHandling />
   </my-container>
 </template>
@@ -20,6 +23,7 @@ import ChangeCounter from "./components/ChangeCounter.vue";
 import DubbledCounter from "./components/DubbledCounter.vue";
 import NormalizedCounter from "./components/NormalizedCounter.vue";
 import RequestHandling from "./components/RequestHandling.vue";
+import TheAuthorization from "./components/TheAuthorization.vue";
 export default {
   components: {
     MyContainer,
@@ -28,6 +32,12 @@ export default {
     DubbledCounter,
     NormalizedCounter,
     RequestHandling,
+    TheAuthorization,
+  },
+  computed: {
+    isAuth() {
+      return this.$store.getters.isAuthorized;
+    },
   },
   methods: {
     increase() {
@@ -42,3 +52,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+div:first-child {
+  height: 120px;
+}
+</style>

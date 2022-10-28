@@ -7,6 +7,7 @@ const store = createStore({
     return {
       counter: 0,
       newCounter: 0,
+      isLoggedIn: false,
     };
   },
   mutations: {
@@ -63,6 +64,9 @@ const store = createStore({
           console.log("Can't get the requested value");
         });
     },
+    setAuth(state, payload) {
+      state.isLoggedIn = payload.isAuth;
+    },
   },
   actions: {
     addTwo(context) {
@@ -80,6 +84,12 @@ const store = createStore({
         context.commit("getCounterValue");
       }, delay);
     },
+    login(context) {
+      context.commit("setAuth", { isAuth: true });
+    },
+    logout(context) {
+      context.commit("setAuth", { isAuth: false });
+    },
   },
   getters: {
     dubbledCounter(state) {
@@ -93,6 +103,9 @@ const store = createStore({
       }
       // If counter is more than 0, it returns the counter * 2
       return dubbledCounter;
+    },
+    isAuthorized(state) {
+      return state.isLoggedIn;
     },
   },
 });
