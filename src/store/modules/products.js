@@ -1,5 +1,5 @@
 export default {
-  nameSpaced: true,
+  namespaced: true,
   state() {
     return {
       products: [
@@ -12,14 +12,6 @@ export default {
             "A collection of must-read books. All-time classics included!",
           price: 99.99,
         },
-        // {
-        //   id: "p2",
-        //   image:
-        //     "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Tent_at_High_Shelf_Camp_cropped.jpg/640px-Tent_at_High_Shelf_Camp_cropped.jpg",
-        //   title: "Mountain Tent",
-        //   description: "A tent for the ambitious outdoor tourist.",
-        //   price: 129.99,
-        // },
         {
           id: "p2",
           image:
