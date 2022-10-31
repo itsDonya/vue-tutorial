@@ -28,6 +28,9 @@ export default {
       state.qty++;
       state.total += product.price;
     },
+    removeItem(state, index) {
+      state.items.splice(index, 1);
+    },
   },
   actions: {
     saveToCart(context, product) {

@@ -5,7 +5,12 @@
     <p id="total-amount">
       Total Amount: <span>${{ cartTotalAmount }}</span>
     </p>
-    <BaseCartItem v-for="(item, i) in cartItems" :key="i" v-bind="item" />
+    <BaseCartItem
+      v-for="(item, i) in cartItems"
+      :key="i"
+      v-bind="item"
+      :index="i"
+    />
   </section>
 </template>
 

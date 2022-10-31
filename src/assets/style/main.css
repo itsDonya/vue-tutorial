@@ -161,11 +161,11 @@ header {
 }
 
 .cart-item div p {
-  font-weight: bold;
+  font-weight: lighter;
 }
 
 .cart-item div p span {
-  font-weight: lighter;
+  font-weight: bold;
 }
 
 .item-total {
@@ -175,6 +175,9 @@ header {
   padding: 0.5rem 0.6rem;
   border-radius: 25px;
   font-size: 14px;
+}
+.item-total span {
+  font-weight: bold;
 }
 
 .item-button {
