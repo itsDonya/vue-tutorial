@@ -12,10 +12,18 @@ export default {
             "A collection of must-read books. All-time classics included!",
           price: 99.99,
         },
+        // {
+        //   id: "p2",
+        //   image:
+        //     "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Tent_at_High_Shelf_Camp_cropped.jpg/640px-Tent_at_High_Shelf_Camp_cropped.jpg",
+        //   title: "Mountain Tent",
+        //   description: "A tent for the ambitious outdoor tourist.",
+        //   price: 129.99,
+        // },
         {
           id: "p2",
           image:
-            "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Tent_at_High_Shelf_Camp_cropped.jpg/640px-Tent_at_High_Shelf_Camp_cropped.jpg",
+            "https://cdn.shopify.com/s/files/1/0253/1626/1993/products/zhota-action1_1280x1280.jpg?v=1655379213",
           title: "Mountain Tent",
           description: "A tent for the ambitious outdoor tourist.",
           price: 129.99,
@@ -31,5 +39,10 @@ export default {
         },
       ],
     };
+  },
+  getters: {
+    products(state) {
+      return state.products;
+    },
   },
 };
