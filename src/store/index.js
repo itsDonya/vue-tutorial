@@ -1,15 +1,11 @@
 import { createStore } from "vuex";
 
 // Modules
-import counterModule from "./modules/counter";
-import newCounterModule from "./modules/newCounter";
-import authorizationModule from "./modules/authorization";
+import productsModule from "./modules/products";
 
 const store = createStore({
   modules: {
-    myCounter: counterModule,
-    myNewCounter: newCounterModule,
-    authorization: authorizationModule,
+    products: productsModule,
   },
 });
 
