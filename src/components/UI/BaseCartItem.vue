@@ -11,7 +11,7 @@
       </p>
     </div>
     <p class="item-total">
-      Total: <span>${{ total }}</span>
+      Total: <span>${{ total.toFixed(2) }}</span>
     </p>
     <button class="item-button" @click="removeItem(index)">Remove</button>
   </div>

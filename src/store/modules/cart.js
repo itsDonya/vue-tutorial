@@ -29,6 +29,10 @@ export default {
       state.total += product.price;
     },
     removeItem(state, index) {
+      const item = state.items[index];
+      state.qty -= item.qty;
+      state.total -= item.price * item.qty;
+      item.qty -= item.qty;
       state.items.splice(index, 1);
     },
   },
@@ -52,7 +56,7 @@ export default {
       return state.items;
     },
     cartTotalAmount(state) {
-      return state.total;
+      return state.total.toFixed(2);
     },
   },
 };
