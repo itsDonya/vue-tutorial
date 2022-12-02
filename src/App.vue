@@ -1,12 +1,12 @@
 <template>
-  <base-button>My Button</base-button>
+	<TheApp />
 </template>
 
 <script>
-import BaseButton from "./components/BaseButton.vue";
+import TheApp from "./components/TheApp.vue";
 export default {
-  components: {
-    BaseButton,
-  },
+	components: {
+		TheApp,
+	},
 };
 </script>
