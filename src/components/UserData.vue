@@ -4,22 +4,14 @@
 </template>
 
 <script>
-import { computed } from "vue";
+import { computed, inject } from "vue";
 export default {
 	emits: ["reset-data"],
-	props: {
-		firstName: {
-			type: String,
-			default: "",
-		},
-		lastName: {
-			type: String,
-			default: "",
-		},
-	},
-	setup(props, context) {
+	setup(_, context) {
+		const firstName = inject("first-name");
+		const lastName = inject("last-name");
 		const fullName = computed(function () {
-			return props.firstName + " " + props.lastName;
+			return firstName.value + " " + lastName.value;
 		});
 
 		function resetData() {

@@ -1,9 +1,6 @@
 <template>
 	<div>
-		<UserData
-			:firstName="fName"
-			:lastName="lName"
-			@reset-data="resetUserData" />
+		<UserData @reset-data="resetUserData" />
 		<input type="text" placeholder="First Name" v-model="fName" />
 		<input type="text" placeholder="Last name" v-model="lName" />
 	</div>
@@ -11,12 +8,15 @@
 
 <script>
 import UserData from "./components/UserData.vue";
-import { ref } from "vue";
+import { ref, provide } from "vue";
 export default {
 	components: { UserData },
 	setup() {
 		const fName = ref("");
 		const lName = ref("");
+
+		provide("first-name", fName);
+		provide("last-name", lName);
 
 		function resetUserData() {
 			fName.value = "";
