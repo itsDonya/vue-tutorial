@@ -1,6 +1,9 @@
 <template>
 	<div>
-		<UserData :firstName="fName" :lastName="lName" />
+		<UserData
+			:firstName="fName"
+			:lastName="lName"
+			@reset-data="resetUserData" />
 		<input type="text" placeholder="First Name" v-model="fName" />
 		<input type="text" placeholder="Last name" v-model="lName" />
 	</div>
@@ -15,7 +18,12 @@ export default {
 		const fName = ref("");
 		const lName = ref("");
 
-		return { fName, lName };
+		function resetUserData() {
+			fName.value = "";
+			lName.value = "";
+		}
+
+		return { fName, lName, resetUserData };
 	},
 };
 </script>
@@ -53,5 +61,6 @@ input {
 button {
 	color: white;
 	background-color: darkcyan;
+	cursor: pointer;
 }
 </style>
