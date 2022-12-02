@@ -1,8 +1,8 @@
 <template>
 	<div>
 		<h1>{{ fullName }}</h1>
-		<input type="text" placeholder="First Name" @input="setFirstName" />
-		<input type="text" placeholder="Last name" @input="setLastName" />
+		<input type="text" placeholder="First Name" v-model="firstName" />
+		<input type="text" placeholder="Last name" v-model="lastName" />
 	</div>
 </template>
 
@@ -13,18 +13,11 @@ export default {
 		const firstName = ref("");
 		const lastName = ref("");
 
-		function setFirstName(e) {
-			firstName.value = e.target.value;
-		}
-		function setLastName(e) {
-			lastName.value = e.target.value;
-		}
-
 		const fullName = computed(function () {
 			return firstName.value + " " + lastName.value;
 		});
 
-		return { setFirstName, setLastName, fullName };
+		return { firstName, lastName, fullName };
 	},
 };
 </script>
