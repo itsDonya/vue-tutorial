@@ -1,15 +1,12 @@
 <template>
-  <TheHeader title="VueShop" />
-  <main>
-    <router-view></router-view>
-  </main>
+  <base-button href="https://google.com">My Button</base-button>
 </template>
 
 <script>
-import TheHeader from "./components/layout/TheHeader.vue";
+import BaseButton from "./components/BaseButton.vue";
 export default {
   components: {
-    TheHeader,
+    BaseButton,
   },
 };
 </script>
