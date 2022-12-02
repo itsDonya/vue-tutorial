@@ -61,9 +61,12 @@ export default {
 			}, 300);
 		});
 
-		watch(props.user, function () {
-			enteredSearchTerm.value = "";
-		});
+		watch(
+			() => props.user,
+			function () {
+				enteredSearchTerm.value = "";
+			}
+		);
 
 		return {
 			enteredSearchTerm,
