@@ -1,66 +1,67 @@
 <template>
-	<div>
-		<UserData @reset-data="resetUserData" />
-		<input type="text" placeholder="First Name" v-model="fName" />
-		<input type="text" placeholder="Last name" v-model="lName" />
-	</div>
+	<main>
+		<user-list :users="activeUsers" @list-projects="selectUser"></user-list>
+		<projects-list :user="selectedUser"></projects-list>
+	</main>
 </template>
 
 <script>
-import UserData from "./components/UserData.vue";
-import { ref, provide } from "vue";
+import USER_DATA from "./dummy-data.js";
+
+import UserList from "./components/users/UserList.vue";
+import ProjectsList from "./components/projects/ProjectsList.vue";
+
 export default {
-	components: { UserData },
-	setup() {
-		const fName = ref("");
-		const lName = ref("");
-
-		provide("first-name", fName);
-		provide("last-name", lName);
-
-		function resetUserData() {
-			fName.value = "";
-			lName.value = "";
-		}
-
-		return { fName, lName, resetUserData };
+	components: {
+		UserList,
+		ProjectsList,
+	},
+	data() {
+		return {
+			selectedUser: null,
+			activeUsers: USER_DATA,
+		};
+	},
+	methods: {
+		selectUser(uid) {
+			this.selectedUser = this.activeUsers.find((usr) => usr.id === uid);
+		},
 	},
 };
 </script>
 
 <style>
 * {
-	padding: 0;
-	margin: 0;
 	box-sizing: border-box;
+}
+html {
 	font-family: sans-serif;
 }
-h1 {
-	margin-top: 2rem;
-	color: darkcyan;
+body {
+	margin: 0;
 }
-div {
+
+main {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 2rem;
+	justify-content: space-around;
 }
-input,
+
 button {
-	padding: 1.2rem 1.8rem;
-	border-radius: 12px;
-	border: 2px solid darkcyan;
-}
-input:focus,
-button:focus {
-	outline: none;
-}
-input {
-	color: darkcyan;
-}
-button {
-	color: white;
-	background-color: darkcyan;
+	font: inherit;
+	border: 1px solid #00006b;
+	background-color: transparent;
+	color: #00006b;
+	padding: 0.5rem 1.5rem;
 	cursor: pointer;
+	margin: 0.5rem 0.5rem 0.5rem 0;
+}
+button:hover,
+button:active {
+	background-color: #efefff;
+}
+
+button.selected {
+	background-color: #00006b;
+	color: white;
 }
 </style>
