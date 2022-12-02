@@ -1,5 +1,5 @@
 <template>
-  <base-button href="https://google.com">My Button</base-button>
+  <base-button>My Button</base-button>
 </template>
 
 <script>

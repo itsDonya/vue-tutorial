@@ -1,9 +1,5 @@
 <template>
-  <component
-    :is="href ? 'a' : to ? 'nuxt-link' : 'button'"
-    :href="href"
-    :to="to"
-  >
+  <component :is="buttonType" :href="href" :to="to">
     <slot />
   </component>
 </template>
@@ -18,6 +14,17 @@ export default {
     to: {
       type: String,
       default: null,
+    },
+  },
+  computed: {
+    buttonType() {
+      if (this.href) {
+        return "a";
+      } else if (this.to) {
+        return "nuxt-link";
+      } else {
+        return "button";
+      }
     },
   },
 };
