@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 export default {
 	setup() {
 		const firstName = ref("");
@@ -15,6 +15,18 @@ export default {
 
 		const fullName = computed(function () {
 			return firstName.value + " " + lastName.value;
+		});
+
+		// watch(firstName, function (newValue, oldValue) {
+		// 	console.log("Old name => ", oldValue);
+		// 	console.log("New name => ", newValue);
+		// });
+
+		watch([firstName, lastName], function (newValues, oldValues) {
+			console.log("Old name => ", oldValues[0]);
+			console.log("New name => ", newValues[0]);
+			console.log("Old family => ", oldValues[1]);
+			console.log("New family => ", newValues[1]);
 		});
 
 		return { firstName, lastName, fullName };
