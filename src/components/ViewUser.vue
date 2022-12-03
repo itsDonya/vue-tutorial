@@ -1,12 +1,11 @@
 <template>
-	<base-modal v-if="modalOpened" title="Users Projects" @close="toggleModal">
-		<p>[Projects]: Nothing to show yet</p>
-	</base-modal>
-	<button @click="toggleModal">Show users project</button>
+	<BaseModal v-if="modalOpened" title="View user?" @close="toggleModal" />
+	<button @click="toggleModal">View</button>
 </template>
 
 <script>
-import modalMixin from "../mixin";
+``;
+import modalMixin from "../modal";
 export default {
 	mixins: [modalMixin],
 };

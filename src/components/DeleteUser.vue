@@ -1,12 +1,11 @@
 <template>
-	<base-modal v-if="modalOpened" title="Users Name" @close="toggleModal">
-		<p>[Names]: Nothing to show yet</p>
-	</base-modal>
-	<button @click="toggleModal">Show users name</button>
+	<BaseModal v-if="modalOpened" title="Delete user?" @close="toggleModal" />
+	<button @click="toggleModal">Delete</button>
 </template>
 
 <script>
-import modalMixin from "../mixin";
+``;
+import modalMixin from "../modal";
 export default {
 	mixins: [modalMixin],
 };

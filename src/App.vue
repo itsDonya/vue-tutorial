@@ -1,20 +1,20 @@
 <template>
 	<main>
-		<UsersAge />
-		<UsersName />
-		<UserProjects />
+		<AddUser />
+		<ViewUser />
+		<DeleteUser />
 	</main>
 </template>
 
 <script>
-import UsersAge from "./components/UsersAge.vue";
-import UsersName from "./components/UsersName.vue";
-import UserProjects from "./components/UserProjects.vue";
+import AddUser from "./components/AddUser.vue";
+import DeleteUser from "./components/DeleteUser.vue";
+import ViewUser from "./components/ViewUser.vue";
 export default {
 	components: {
-		UsersAge,
-		UsersName,
-		UserProjects,
+		AddUser,
+		ViewUser,
+		DeleteUser,
 	},
 };
 </script>
@@ -31,7 +31,8 @@ body {
 main {
 	padding: 2rem;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-start;
+	gap: 2rem;
 	align-items: center;
 	position: relative;
 }

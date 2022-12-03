@@ -1,12 +1,11 @@
 <template>
-	<base-modal v-if="modalOpened" title="Users age average" @close="toggleModal">
-		<p>[Ages]: Nothing to show yet</p>
-	</base-modal>
-	<button @click="toggleModal">Show users age average</button>
+	<BaseModal v-if="modalOpened" title="Add user?" @close="toggleModal" />
+	<button @click="toggleModal">Add</button>
 </template>
 
 <script>
-import modalMixin from "../mixin";
+``;
+import modalMixin from "../modal";
 export default {
 	mixins: [modalMixin],
 };
