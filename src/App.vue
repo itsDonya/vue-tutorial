@@ -1,68 +1,38 @@
 <template>
 	<main>
-		<user-list :users="activeUsers" @list-projects="selectUser"></user-list>
-		<projects-list :user="selectedUser"></projects-list>
+		<UsersAge />
+		<UsersName />
+		<UserProjects />
 	</main>
 </template>
 
 <script>
-import USER_DATA from "./dummy-data.js";
-
-import UserList from "./components/users/UserList.vue";
-import ProjectsList from "./components/projects/ProjectsList.vue";
-
-import { ref } from "vue";
-
+import UsersAge from "./components/UsersAge.vue";
+import UsersName from "./components/UsersName.vue";
+import UserProjects from "./components/UserProjects.vue";
 export default {
 	components: {
-		UserList,
-		ProjectsList,
-	},
-	setup() {
-		const selectedUser = ref(null);
-		const activeUsers = ref(USER_DATA);
-
-		function selectUser(uid) {
-			selectedUser.value = activeUsers.value.find((usr) => usr.id === uid);
-		}
-
-		return { selectedUser, activeUsers, selectUser };
+		UsersAge,
+		UsersName,
+		UserProjects,
 	},
 };
 </script>
 
 <style>
 * {
+	padding: 0;
+	margin: 0;
 	box-sizing: border-box;
 }
-html {
+body {
 	font-family: sans-serif;
 }
-body {
-	margin: 0;
-}
-
 main {
+	padding: 2rem;
 	display: flex;
-	justify-content: space-around;
-}
-
-button {
-	font: inherit;
-	border: 1px solid #00006b;
-	background-color: transparent;
-	color: #00006b;
-	padding: 0.5rem 1.5rem;
-	cursor: pointer;
-	margin: 0.5rem 0.5rem 0.5rem 0;
-}
-button:hover,
-button:active {
-	background-color: #efefff;
-}
-
-button.selected {
-	background-color: #00006b;
-	color: white;
+	justify-content: space-between;
+	align-items: center;
+	position: relative;
 }
 </style>
