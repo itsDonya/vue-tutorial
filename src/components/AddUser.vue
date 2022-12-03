@@ -4,10 +4,17 @@
 </template>
 
 <script>
-``;
-import modalMixin from "../modal";
+import BaseModal from "./UI/BaseModal.vue";
+import useModal from "../hooks/modal";
 export default {
-	mixins: [modalMixin],
+	components: {
+		BaseModal,
+	},
+	setup() {
+		const [modalOpened, toggleModal] = useModal();
+
+		return { modalOpened, toggleModal };
+	},
 };
 </script>
 
